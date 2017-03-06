@@ -14,5 +14,5 @@
 #   Test Package:              'Cmd + Shift + T'
 
 hello <- function() {
-  print("Hello, world! This is my first function. See if this commits")
+  print("Hello, world! This is my first function.")
 }
