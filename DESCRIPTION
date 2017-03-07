@@ -2,7 +2,7 @@ Package: epbi500
 Type: Package
 Title: Balance and Sensitivity Diagnostic Graphs
 Version: 0.1.0
-Author: Who wrote it
+Author: Ngendahimana K David
 Maintainer: The package maintainer <dkn18@case.edu>
 Description: Package graphs balance diagnostics and sensitivity analysis results
 License: What license is it under?
