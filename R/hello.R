@@ -17,7 +17,7 @@ add <- function(x, y) {
 #' @return The sum of \code{x} and \code{y}.
 #' @examples
 #' subtract(1, 1)
-#' subtract(10, 1)
+#' subtract (10, 1)
 
 subtract <- function(x, y) {
   x - y
