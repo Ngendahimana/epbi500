@@ -8,7 +8,6 @@ library(tidyverse);library(designmatch); library(Deducer);library(rbounds)
 library(data.table);library(lattice);library(gdata);library(compareGroups);library(psych)
 library(knitr)
 
-rhc = read.csv("rhc.csv")
 
 ## DATA CLEAN-UP   ##
 
@@ -37,7 +36,7 @@ column_types_rhc <-
        ca = col_factor(c("No", "Yes", "Metastatic"))
   )
 
-rhc.raw <- read_csv("rhc.csv", col_types = column_types_rhc)
+rhc.raw <- read_csv("data-raw/rhc.csv", col_types = column_types_rhc)
 
 rhc <- rhc.raw %>% dplyr::rename(subject = X1) %>%
   select(subject, swang1,
@@ -103,3 +102,4 @@ rhc <- rhc %>%
          transhx_f = factor(transhx == 1, levels = c(F, T), labels = c("No", "Yes"))
   )
 
+save(rhc, file = 'data/rhc.rdata', compress = 'xz')
