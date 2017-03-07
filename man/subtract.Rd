@@ -19,6 +19,6 @@ Subtract two numbers.
 }
 \examples{
 subtract(1, 1)
-subtract(10, 1)
+subtract (10, 1)
 }
 
