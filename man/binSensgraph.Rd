@@ -9,7 +9,7 @@ binSensgraph(x, y = NULL, Gamma = 3, GammaInc = 0.2, alpha = 0.06)
 \arguments{
 \item{x}{Count of pairs where only control has outcome.}
 
-\item{y}{Count of pairs where only treated has outcome.}
+\item{y}{Count of pairs where onlytreated has outcome.}
 }
 \value{
 The sum of \code{x} and \code{y}.
@@ -18,6 +18,7 @@ The sum of \code{x} and \code{y}.
 Visualizing sensivity results
 }
 \examples{
-binSensgraph(10,45)
+subtract(1, 1)
+subtract (10, 1)
 }
 
