@@ -32,7 +32,7 @@ subtract <- function(x, y) {
 #' subtract(1, 1)
 #' subtract (10, 1)
 
-binSensgraph = function(x, y = NULL, Gamma = 3, GammaInc = 0.2, alpha = 0.06) {
+binSensgraph <- function(x, y = NULL, Gamma = 3, GammaInc = 0.2, alpha = 0.06) {
     if (length(x) == 1) {
         # in case your are passing # of discocordant pairs
         ctrl <- x
@@ -44,7 +44,7 @@ binSensgraph = function(x, y = NULL, Gamma = 3, GammaInc = 0.2, alpha = 0.06) {
         table(y.t, y.c)
         y.tmp1 <- table(y.t, y.c)[2]  # select 1st set of  discocordant pairs i.e treated had outcome, control did not hav outcome
         y.tmp2 <- table(y.t, y.c)[3]  # select 2nd set of  discocordant pairs i.e control had outcome, treated did not have outcome
-        (if (y.tmp1 >= y.tmp2) 
+        (if (y.tmp1 >= y.tmp2)
             {
                 trt <- y.tmp1
                 ctrl <- y.tmp2
@@ -70,29 +70,29 @@ binSensgraph = function(x, y = NULL, Gamma = 3, GammaInc = 0.2, alpha = 0.06) {
     }
     pval <- lo[1]
     bounds <- data.frame(gamma, plower = round(lo, 5), pupper = round(up, 5))
-    
+
     bounds$min = abs(alpha - bounds$pupper)
-    
+
     vrt = round(bounds[bounds$min == min(bounds$min), ]$gamma, 2)
     hrz = round(bounds[bounds$min == min(bounds$min), ]$pupper, 2)
-    
-    
+
+
     # ggplot(data = bounds, aes(x = gamma,y =
     # pupper))+geom_line()+geom_point(aes(x=vrt,y=hrz))+ylab('p upper
     # bound')+xlab('gamma
     # (Bias)')+theme_bw()+annotate('text',x=vrt,y=hrz,hjust=1.3,label=paste0('(',vrt,',',hrz,')'))+labs(title
     # = 'Binary Outcome Sensitivity Plot')
-    
-    plot(bounds$pupper ~ bounds$gamma, type = "l", xlab = "Gamma", ylab = "p-val upper bound", 
+
+    plot(bounds$pupper ~ bounds$gamma, type = "l", xlab = "Gamma", ylab = "p-val upper bound",
         main = "Sensitivity plot for binary outcomes")
     text(vrt, hrz, paste0("(", vrt, ",", hrz, ")"), pos = 2)
     points(vrt, hrz, pch = 15)
-    
-    
+
+
     colnames(bounds) <- c("Gamma", "Lower bound", "Upper bound")
     msg <- "Rosenbaum Sensitivity Test \n"
     note <- "Note: Gamma is Odds of Differential Assignment To\n Treatment Due to Unobserved Factors \n"
-    Obj <- list(Gamma = Gamma, GammaInc = GammaInc, pval = pval, msg = msg, bounds = bounds, 
+    Obj <- list(Gamma = Gamma, GammaInc = GammaInc, pval = pval, msg = msg, bounds = bounds,
         note = note)
     class(Obj) <- c("rbounds", class(Obj))
     Obj
